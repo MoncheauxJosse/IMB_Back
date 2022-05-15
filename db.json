@@ -1,16 +1,28 @@
 {
   "annonce": [
-      {
-        "id": 1 ,
-        "title":  "nom 1" ,
-        "contenue": "prenom",
-         "tel": "tel"
-        },
-      {
-        "id": 2 ,
-        "title":  "nom 2" ,
-        "contenue": "prenom",
-         "tel": "tel"
-        }
-    ]
+    {
+      "id": 1,
+      "Nom": "tou",
+      "Mdp": "MDP",
+      "age": "age",
+      "taille": "1m50",
+      "poids": "52"
+    },
+    {
+      "id": 2,
+      "Nom": "toto",
+      "Mdp": "MDP",
+      "age": "age",
+      "taille": "1m50",
+      "poids": "52"
+    },
+    {
+      "id": 3,
+      "Nom": "toto",
+      "Mdp": "MDP",
+      "age": "age",
+      "taille": "1m50",
+      "poids": "52"
+    }
+  ]
 }

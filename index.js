@@ -1,6 +1,6 @@
 import express from "express"
 import cors from "cors"
-import {listAnnonce} from "./db.js"
+import {listAnnonce,NouveauCompte} from "./db.js"
 
 //Notre objet express
 const api = express()
@@ -18,8 +18,17 @@ api.get('/annonce', (req, res) => {
 
 
 
+//recupere les donné du front 
+api.post('/inscription', (req, res) => {
+
+   
+    NouveauCompte(req.body)
+
+    res.json({message: "compte créé !"})
+    
+})
 
 api.listen(80, () => {
-    console.log(listAnnonce())
+   
    
 })
