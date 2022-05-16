@@ -64,9 +64,18 @@ if(formulaireIncomplé!=true){
 }
   
       // ajoute la donné recupéré la variable nouveau membre , sauf l'id qui sera un "+1" du dernier id dans la bd
-  db.data.annonce.push({ id: number, Nom: nouveauMembre[0],Mdp: nouveauMembre[1], age: nouveauMembre[2], taille: nouveauMembre[3], poids: nouveauMembre[4] })
+  db.data.annonce.push({ id: number, Nom: nouveauMembre[0],Mdp: nouveauMembre[1], age: nouveauMembre[2],imc:[{taille: nouveauMembre[3], poids: nouveauMembre[4]}] })
   // ecrit dans le script bd.json 
   db.write()
+
+
+  let PoisNombre = Number(nouveauMembre[4])
+  let TailleNombre = Number(nouveauMembre[3])
+
+  let imc=  PoisNombre/(( TailleNombre* TailleNombre)/10000)
+
+  //console.log(imc)
+  return imc
     }else{
 
 

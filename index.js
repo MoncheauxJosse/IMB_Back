@@ -22,9 +22,9 @@ api.get('/annonce', (req, res) => {
 api.post('/inscription', (req, res) => {
 
    
-    NouveauCompte(req.body)
+    
 
-    res.json({message: "compte créé !"})
+    res.json(NouveauCompte(req.body))
     
 })
 
