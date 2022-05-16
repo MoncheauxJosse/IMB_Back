@@ -21,9 +21,6 @@ api.get('/annonce', (req, res) => {
 //recupere les donné du front 
 api.post('/inscription', (req, res) => {
 
-   
-    
-
     res.json(NouveauCompte(req.body))
     
 })
