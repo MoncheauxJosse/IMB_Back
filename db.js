@@ -60,8 +60,12 @@ export const NouveauCompte = (info) => {
     number = 1
   }
 
-  // ajoute la donné recupéré la variable nouveau membre , sauf l'id qui sera un "+1" du dernier id dans la bd
-  db.data.annonce.push({ id: number, Nom: nouveauMembre[0], Mdp: nouveauMembre[1], age: nouveauMembre[2], imc: [{ taille: nouveauMembre[3], poids: nouveauMembre[4] }] })
+  //créer une date
+  let dateImc= new Date
+
+  console.log(dateImc)
+  // ajoute la donné recupéré la variable nouveau membre , sauf l'id qui sera un "+1" du dernier id , dans la bd
+  db.data.annonce.push({ id: number, Nom: nouveauMembre[0], Mdp: nouveauMembre[1], age: nouveauMembre[2], imc: [{date: dateImc, taille: nouveauMembre[3], poids: nouveauMembre[4] }] })
   // ecrit dans le script bd.json 
   db.write()
 
@@ -71,9 +75,10 @@ export const NouveauCompte = (info) => {
 
   let imc = PoisNombre / ((TailleNombre * TailleNombre) / 10000)
 
-  //console.log(imc)
+  
+  //renvoie premier imc + identifiant du cliant pour qu'il soit directement co apres ca création
 
-  let array=[imc,number]
+  let array=[dateImc,imc,number]
   return array
 
 }
@@ -96,8 +101,9 @@ let ImcBd = db.chain.get("annonce").find({id: idrecup}).value()
 
 //  ajoute le tableaux recuperé dans la variable imcBd (.imc est le nom du tableaux )
 let imctable=ImcBd.imc
+let dateImc= new Date
 //push les nouvelle info dans le tableau
-imctable.push(body)
+imctable.push({"date": dateImc,"taille":body.taille,"poids":body.poids})
 
 //ajoute le tableaux et ecrase l ancien dans la save du client lié a l'id recuperer 
 db.chain.get("annonce").find({id: idrecup}).imc = imctable
