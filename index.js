@@ -18,12 +18,18 @@ api.get('/annonce', (req, res) => {
 
 
 
+//_________________________________________________________INSCRIPTION_______________________________________
 //recupere les donné du front 
 api.post('/inscription', (req, res) => {
 
     res.json(NouveauCompte(req.body))
     
 })
+
+
+
+//_______________________________________________________NOUVEAU_IMC_____________________________________________________
+
 
 //recupere l 'id du client via le params.id ( inscrit dans le lien ) et les donné dans le body . Ceci ce fait dans nouveauxImc/ {id du client}
 api.post('/NouveauImc/:id', (req, res) => {
@@ -37,6 +43,8 @@ api.post('/NouveauImc/:id', (req, res) => {
     
 })
 
+
+//_____________________________________________________Lancement API_______________________________________________________
 api.listen(80, () => {
    
    

@@ -33,24 +33,17 @@ export const NouveauCompte = (info) => {
   //transforme l'info en object
   let nouveauMembre = Object.values(info)
 
-
   // crééer un id qui sera +1 a l'id de la bd la plus haute en plusieur etape:
-
 
   // d'abord verifie le dernier objet dans la bd 
   let longueur = db.chain.get("annonce").value().length - 1
-
   let number
 
   if (longueur != -1) {
-
-
-
     //ensuite ajoute l objet dans une varible
     let toto = db.chain.get("annonce").slice(longueur).find("id").value()
 
     //recupere l'id dans lobjet en question 
-
     let plusGrandId = toto.id
 
     //prend l'information et dit bien que ceci est un nombre
@@ -74,9 +67,7 @@ export const NouveauCompte = (info) => {
   let TailleNombre = Number(nouveauMembre[3])
 
   let imc = PoisNombre / ((TailleNombre * TailleNombre) / 10000)
-
-  
-  //renvoie premier imc + identifiant du cliant pour qu'il soit directement co apres ca création
+  //renvoie date de création, premier imc + identifiant du cliant pour qu'il soit directement co apres ca création
 
   let array=[dateImc,imc,number]
   return array
