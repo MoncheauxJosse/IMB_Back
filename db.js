@@ -72,7 +72,9 @@ export const NouveauCompte = (info) => {
   let imc = PoisNombre / ((TailleNombre * TailleNombre) / 10000)
 
   //console.log(imc)
-  return imc
+
+  let array=[imc,number]
+  return array
 
 }
 
