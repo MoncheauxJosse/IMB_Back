@@ -51,14 +51,17 @@ api.get('/Connection', (req, res) => {
 
      let conection =Connect(req.body)
 
-     if(conection !== false){
+     //si la reponse est diffent de false 
+     if(conection[0]!== false){
 
 
+        // renvoie le tableau ainsi [id,TableIMC[imc,...]]
         res.json(conection)
 
+        //sinon renvoie un message erreur
      }else{
 
-        res.json("erreur dans les information données")
+        res.json("erreur dans les informations données")
 
      }
 

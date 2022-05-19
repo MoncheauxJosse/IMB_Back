@@ -112,23 +112,47 @@ export const Connect = (body) => {
 //transforme l'info en object
 let infoRecup = Object.values(body)
 
-
+//SI il n'y a pas le nom et le mot de passe dans la bd
 if(!db.chain.get("annonce").find({Nom: infoRecup[0],Mdp: infoRecup[1]}).value()){
 
 
-
+// retourne faux
 return false
 
 }else{
-
   
-  
-
+//sinon recupere les donné de la personne qui veut ce connecté
   let idco =db.chain.get("annonce").find({Nom: infoRecup[0],Mdp: infoRecup[1]}).value()
-  return idco.id
+
+   
+// recupere le tableaux dans la donnée
+let TableInfofIMC= idco.imc
+
+ //créer un nouveaux tableaux vide qui va prendre la date ( id) et les donné du IMC calculé
+let TalbeIMC=[]
+
+//lance un for pour trier le tableaux a l'aide de ca longeur (lenght) pour recupérer le poids et la taille
+ for(let i=0 ; i< TableInfofIMC.length;i++){
+
+//recupere dans le tableaux le poid et la taille et stipule que cela sont des nombres , [i] represente dans qu'elle objet nous somme 
+// a chaque iteration i augmente de +1
+  let Pois = Number(TableInfofIMC[i].poids)
+  let Taille =Number(TableInfofIMC[i].taille)
+
+ 
+
+// fait le calcul du imc
+  let imc = Pois / ((Taille * Taille) / 10000)
+
+  //ajoute via push les donné de la date de l objet ( qui sera l identifiant) et l'imc calculer dans le tableaux vide
+  TalbeIMC.push({dateID:TableInfofIMC[i].date,imc:imc})
+
+  // enfin remonte en haut du fort si la longeur du tableaux n'est pas fini 
+ }
+
+  //renvoie un Objet avec l'idClient et le tableauImc
+  return [{idClient:idco.id,TalbeIMC}]
 
 }
-
-
-
 }
+
