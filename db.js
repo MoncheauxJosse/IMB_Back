@@ -63,14 +63,14 @@ export const NouveauCompte = (info) => {
   db.write()
 
 
-  let PoisNombre = Number(nouveauMembre[4])
-  let TailleNombre = Number(nouveauMembre[3])
+  //let PoisNombre = Number(nouveauMembre[4])
+  //let TailleNombre = Number(nouveauMembre[3])
 
-  let imc = PoisNombre / ((TailleNombre * TailleNombre) / 10000)
+  //let imc = PoisNombre / ((TailleNombre * TailleNombre) / 10000)
   //renvoie date de création, premier imc + identifiant du cliant pour qu'il soit directement co apres ca création
 
-  let array=[dateImc,imc,number]
-  return array
+  //let array=[dateImc,imc,number]
+ // return array
 
 }
 
@@ -101,6 +101,34 @@ db.chain.get("annonce").find({id: idrecup}).imc = imctable
 
 //ecrit dans le fichié
 db.write()
+
+
+}
+
+//___________________________________________connection_______________________________________
+
+export const Connect = (body) => {
+
+//transforme l'info en object
+let infoRecup = Object.values(body)
+
+
+if(!db.chain.get("annonce").find({Nom: infoRecup[0],Mdp: infoRecup[1]}).value()){
+
+
+
+return false
+
+}else{
+
+  
+  
+
+  let idco =db.chain.get("annonce").find({Nom: infoRecup[0],Mdp: infoRecup[1]}).value()
+  return idco.id
+
+}
+
 
 
 }

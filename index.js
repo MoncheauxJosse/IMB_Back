@@ -1,6 +1,6 @@
 import express from "express"
 import cors from "cors"
-import {listAnnonce,NouveauCompte,NouveauIMC} from "./db.js"
+import {listAnnonce,NouveauCompte,NouveauIMC,Connect} from "./db.js"
 
 //Notre objet express
 const api = express()
@@ -22,7 +22,9 @@ api.get('/annonce', (req, res) => {
 //recupere les donné du front 
 api.post('/inscription', (req, res) => {
 
-    res.json(NouveauCompte(req.body))
+    NouveauCompte(req.body)
+
+    res.json("ok")
     
 })
 
@@ -42,6 +44,26 @@ api.post('/NouveauImc/:id', (req, res) => {
     res.json("ok")
     
 })
+
+//_______________________________________________________CONNECTION________________________________________
+
+api.get('/Connection', (req, res) => {
+
+     let conection =Connect(req.body)
+
+     if(conection !== false){
+
+
+        res.json(conection)
+
+     }else{
+
+        res.json("erreur dans les information données")
+
+     }
+
+})
+
 
 
 //_____________________________________________________Lancement API_______________________________________________________
