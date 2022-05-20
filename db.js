@@ -105,7 +105,7 @@ db.write()
 export const Connect = (mdp,nom) => {
 
 //transforme l'info en object
-
+console.log("mdp : "+mdp+" nom : "+nom)
 
 //SI il n'y a pas le nom et le mot de passe dans la bd
 if(!db.chain.get("annonce").find({Nom: nom,Mdp: mdp}).value()){

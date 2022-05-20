@@ -52,12 +52,15 @@ api.get('/Connection/:mdp/:nom', (req, res) => {
 
      let conection =Connect(req.params.nom,req.params.mdp)
 
+     
      //si la reponse est diffent de false 
-     if(conection[0]!== false){
+
+     console.log(conection)
+     if(conection!== false){
 
 
         // renvoie le tableau ainsi [id,TableIMC[imc,...]]
-        res.json(conection)
+        res.json({messaage:"c bon",conection, erreur:true})
 
         //sinon renvoie un message erreur
      }else{
