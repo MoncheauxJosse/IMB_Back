@@ -1,5 +1,6 @@
 import { Low as low, JSONFileSync as FileSync } from 'lowdb';
 import lodash from 'lodash'
+//import { Hashcode } from './service/cryptage';
 
 
 const adapter = new FileSync('db.json');
@@ -56,21 +57,15 @@ export const NouveauCompte = (info) => {
   //créer une date
   let dateImc= new Date
 
+  //passe par le Hashcode
+ //let password= Hashcode(nouveauMembre[1])
+
+
   console.log(dateImc)
   // ajoute la donné recupéré la variable nouveau membre , sauf l'id qui sera un "+1" du dernier id , dans la bd
-  db.data.annonce.push({ id: number, Nom: nouveauMembre[0], Mdp: nouveauMembre[1], age: nouveauMembre[2], imc: [{date: dateImc, taille: nouveauMembre[3], poids: nouveauMembre[4] }] })
+  db.data.annonce.push({ id: number, Nom: nouveauMembre[0], Mdp:nouveauMembre[1], age: nouveauMembre[2], imc: [{date: dateImc, taille: nouveauMembre[3], poids: nouveauMembre[4] }] })
   // ecrit dans le script bd.json 
   db.write()
-
-
-  //let PoisNombre = Number(nouveauMembre[4])
-  //let TailleNombre = Number(nouveauMembre[3])
-
-  //let imc = PoisNombre / ((TailleNombre * TailleNombre) / 10000)
-  //renvoie date de création, premier imc + identifiant du cliant pour qu'il soit directement co apres ca création
-
-  //let array=[dateImc,imc,number]
- // return array
 
 }
 
@@ -107,13 +102,13 @@ db.write()
 
 //___________________________________________connection_______________________________________
 
-export const Connect = (body) => {
+export const Connect = (mdp,nom) => {
 
 //transforme l'info en object
-let infoRecup = Object.values(body)
+
 
 //SI il n'y a pas le nom et le mot de passe dans la bd
-if(!db.chain.get("annonce").find({Nom: infoRecup[0],Mdp: infoRecup[1]}).value()){
+if(!db.chain.get("annonce").find({Nom: nom,Mdp: mdp}).value()){
 
 
 // retourne faux
@@ -122,7 +117,7 @@ return false
 }else{
   
 //sinon recupere les donné de la personne qui veut ce connecté
-  let idco =db.chain.get("annonce").find({Nom: infoRecup[0],Mdp: infoRecup[1]}).value()
+  let idco =db.chain.get("annonce").find({Nom: nom,Mdp: mdp}).value()
 
    
 // recupere le tableaux dans la donnée

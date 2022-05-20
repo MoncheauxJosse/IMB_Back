@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import {listAnnonce,NouveauCompte,NouveauIMC,Connect} from "./db.js"
 
+
 //Notre objet express
 const api = express()
 
@@ -47,9 +48,9 @@ api.post('/NouveauImc/:id', (req, res) => {
 
 //_______________________________________________________CONNECTION________________________________________
 
-api.get('/Connection', (req, res) => {
+api.get('/Connection/:mdp/:nom', (req, res) => {
 
-     let conection =Connect(req.body)
+     let conection =Connect(req.params.nom,req.params.mdp)
 
      //si la reponse est diffent de false 
      if(conection[0]!== false){
