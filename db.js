@@ -237,3 +237,47 @@ return false
 
   }
 }
+
+
+
+export const RetourImc =(getid) => {
+
+  console.log(getid)
+
+  let idn = Number(getid)
+
+  let idco = db.chain.get("annonce").find({ id: idn}).value()
+
+  console.log(db.chain.get("annonce").find({ id: idn}).value())
+
+  let TableInfofIMC = idco.imc
+
+  let TalbeIMC = []
+
+  //lance un for pour trier le tableaux a l'aide de ca longeur (lenght) pour recupérer le poids et la taille
+  for (let i = 0; i < TableInfofIMC.length; i++) {
+
+    //recupere dans le tableaux le poid et la taille et stipule que cela sont des nombres , [i] represente dans qu'elle objet nous somme 
+    // a chaque iteration i augmente de +1
+    let Pois = Number(TableInfofIMC[i].poids)
+    let Taille = Number(TableInfofIMC[i].taille)
+
+
+
+    // fait le calcul du imc
+    let imc = Pois / ((Taille * Taille) / 10000)
+
+    //ajoute via push les donné de la date de l objet ( qui sera l identifiant) et l'imc calculer dans le tableaux vide
+    TalbeIMC.push({ "dateID": TableInfofIMC[i].date, "imc": imc })
+
+    // enfin remonte en haut du fort si la longeur du tableaux n'est pas fini 
+
+    
+
+  }
+
+  return ({"idClient": idco.id, "table": TalbeIMC })
+
+
+
+}

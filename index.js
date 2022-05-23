@@ -1,6 +1,6 @@
 import express from "express"
 import cors from "cors"
-import {listAnnonce,NouveauCompte,NouveauIMC,RetourDonné,Connect} from "./db.js"
+import {listAnnonce,NouveauCompte,NouveauIMC,RetourDonné,Connect, RetourImc} from "./db.js"
 
 
 //Notre objet express
@@ -86,7 +86,14 @@ api.get('/Connection/:nom/:mdp',async (req, res) => {
   
 })
 
+api.get('/Acceuil/:id',async (req, res) => {
 
+
+    let retourDonné = RetourImc(req.params.id)
+
+    res.json({retourimc:retourDonné})
+
+})
 
 //_____________________________________________________Lancement API_______________________________________________________
 api.listen(80, () => {
