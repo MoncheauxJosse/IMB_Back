@@ -88,7 +88,7 @@ api.get('/Connection/:nom/:mdp',async (req, res) => {
   
 })
 
-api.get('/Acceuil/:id',async (req, res) => {
+api.get('/Accueil/:id',async (req, res) => {
 
 
     let retourDonné = RetourImc(req.params.id)
