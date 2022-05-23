@@ -24,11 +24,31 @@ api.get('/annonce', (req, res) => {
 //recupere les donné du front 
 api.post('/inscription', (req, res) => {
 
-    
+
+
+    let Mdp =req.body.Mdp
+    let Nom =req.body.Nom
+    let age =req.body.age
+    let taille =req.body.taille
+    let poids =req.body.poids
+
+
+    Nom=Nom.split(/ +/g,"")
+    Mdp=Mdp.split(/ +/g,"")
+    age =age.split(/ +/g,"")
+    taille=taille.split(/ +/g,"")
+    poids=poids.split(/ +/g,"")
+ 
+
+    if(Nom== ''||Mdp== ''||age== '' ||taille== '' ||poids== ''){
+        
+
+        res.json("certains champs sont vides ")
+    }else{
     NouveauCompte(req.body)
 
     res.json("ok")
-
+}
 })
 
 
@@ -40,11 +60,25 @@ api.post('/inscription', (req, res) => {
 api.post('/NouveauImc/:id', (req, res) => {
 
     
+    let taille =req.body.taille
+    let poids =req.body.poids
+
+    taille=taille.split(/ +/g,"")
+    poids=poids.split(/ +/g,"")
+
+    if(taille== '' ||poids== ''){
+        
+
+        res.json("certains champs sont vides ")
+    }else{
+
+    
 //envoie le information recupere dans db.js 
     NouveauIMC(req.params.id,req.body)
 
     //renvoie ok au client
     res.json("ok")
+    }
     
 })
 
