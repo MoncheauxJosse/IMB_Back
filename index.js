@@ -1,6 +1,6 @@
 import express from "express"
 import cors from "cors"
-import {listAnnonce,NouveauCompte,NouveauIMC,Connect} from "./db.js"
+import {listAnnonce,NouveauCompte,NouveauIMC,RetourDonné,Connect} from "./db.js"
 
 
 //Notre objet express
@@ -48,19 +48,34 @@ api.post('/NouveauImc/:id', (req, res) => {
 
 //_______________________________________________________CONNECTION________________________________________
 
-api.get('/Connection/:mdp/:nom', (req, res) => {
+api.get('/Connection/:nom/:mdp',async (req, res) => {
 
-     let conection =Connect(req.params.nom,req.params.mdp)
+    Connect(req.params.mdp,req.params.nom)
+
+     
 
      
      //si la reponse est diffent de false 
 
-     console.log(conection)
-     if(conection!== false){
+   
+     let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("done!"), 1500)
+      });
 
 
-        // renvoie le tableau ainsi [id,TableIMC[imc,...]]
-        res.json({messaage:"c bon",conection, erreur:true})
+      let result = await promise;
+
+      let conection = RetourDonné(req.params.mdp,req.params.nom)
+
+     console.log("retour de la connection "+ conection)
+
+     if (conection != undefined && conection != false){
+
+        console.log("ligne 74"+ conection)
+
+
+         // renvoie le tableau ainsi [id,TableIMC[imc,...]]
+         res.json({connection:conection, erreur:false})
 
         //sinon renvoie un message erreur
      }else{
@@ -68,7 +83,7 @@ api.get('/Connection/:mdp/:nom', (req, res) => {
         res.json("erreur dans les informations données")
 
      }
-
+  
 })
 
 

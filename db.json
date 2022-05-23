@@ -3,20 +3,31 @@
     {
       "id": 1,
       "Nom": "Moncheaux",
-      "Mdp": "MDP",
+      "Mdp": "$2b$10$gYjSNJNTuyNTZNHq1dLyF.CfajVf3EBo2hz6Ta7raroUtMtEhMPxS",
       "age": "age",
       "imc": [
         {
-          "date": "2022-05-20T08:48:38.110Z",
+          "date": "2022-05-23T10:17:57.013Z",
           "taille": "170",
           "poids": "70"
         },
         {
-          "date": "2022-05-20T08:48:48.603Z",
+          "date": "2022-05-23T10:19:21.189Z",
           "taille": "170",
-          "poids": "71"
+          "poids": "69"
+        },
+        {
+          "date": "2022-05-23T11:52:19.165Z",
+          "taille": "170",
+          "poids": "69"
+        },
+        {
+          "date": "2022-05-23T12:00:05.040Z",
+          "taille": "170",
+          "poids": "69"
         }
       ]
     }
-  ]
+  ],
+  "detailleImc": []
 }
