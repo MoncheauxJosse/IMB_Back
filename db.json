@@ -1,18 +1,5 @@
 {
   "annonce": [
-    {
-      "id": 1,
-      "Nom": "Moncheaux",
-      "Mdp": "$2b$10$gYjSNJNTuyNTZNHq1dLyF.CfajVf3EBo2hz6Ta7raroUtMtEhMPxS",
-      "age": "age",
-      "imc": [
-        {
-          "date": "2022-05-23T10:17:57.013Z",
-          "taille": "170",
-          "poids": "70"
-        }
-      ]
-    }
   ],
   "detailleImc": []
 }

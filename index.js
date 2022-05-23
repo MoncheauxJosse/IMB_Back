@@ -3,6 +3,7 @@ import cors from "cors"
 import {listAnnonce,NouveauCompte,NouveauIMC,RetourDonné,Connect, RetourImc} from "./db.js"
 
 
+
 //Notre objet express
 const api = express()
 
@@ -23,10 +24,11 @@ api.get('/annonce', (req, res) => {
 //recupere les donné du front 
 api.post('/inscription', (req, res) => {
 
+    
     NouveauCompte(req.body)
 
     res.json("ok")
-    
+
 })
 
 
